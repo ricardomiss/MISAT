@@ -2,12 +2,12 @@
 
 namespace MiSAT.Models
 {
-    [XmlRoot(ElementName = "Envelope", Namespace = "http://schemas.xmlsoap.org/soap/envelope/")]
+    [XmlRoot(ElementName = "Envelope", Namespace = WSNamespaces.s)]
     public class Envelope
     {
-        [XmlElement(ElementName = "Header", Namespace = "http://schemas.xmlsoap.org/soap/envelope/")]
+        [XmlElement(ElementName = "Header", Namespace = WSNamespaces.s)]
         public Header Header { get; set; }
-        [XmlElement(ElementName = "Body", Namespace = "http://schemas.xmlsoap.org/soap/envelope/")]
+        [XmlElement(ElementName = "Body", Namespace = WSNamespaces.s)]
         public Body Body { get; set; }
 
     }

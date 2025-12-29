@@ -5,11 +5,11 @@ namespace MiSAT.Models
     [XmlRoot(ElementName = "Transforms")]
     public class Transforms
     {
-        [XmlElement(ElementName = "Transforms")]
+        [XmlElement(ElementName = "Transform")]
         public Transform Transform { get; set; }
     }
 
-    [XmlRoot(ElementName = "Transforms")]
+    [XmlRoot(ElementName = "Transform")]
     public class Transform
     {
         [XmlAttribute(AttributeName = "Algorithm")]
