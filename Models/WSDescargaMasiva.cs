@@ -12,6 +12,10 @@ namespace MiSAT.Models
         internal const string o = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
     }
 
+    /// <summary>
+    /// Representa la información de autenticación que incluye los detalles del certificado, el período de validez 
+    /// y los datos de la firma digital.
+    /// </summary>
     public class Autenticacion
     {
         public DateTime FechaInicial { get; set; }

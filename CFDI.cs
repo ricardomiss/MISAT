@@ -4,6 +4,9 @@ using System.Xml.Serialization;
 
 namespace MiSAT
 {
+    /// <summary>
+    /// Proporciona métodos para documentos CFDI del SAT.
+    /// </summary>
     public static class CFDI
     {
         /// <summary>
