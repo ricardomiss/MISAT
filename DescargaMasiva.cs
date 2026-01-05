@@ -14,7 +14,7 @@ namespace MiSAT
         /// Genera la solicitud de autenticación en formato XML a partir de un objeto <see cref="Autenticacion"/>.
         /// </summary>
         /// <param name="request">Objeto de autenticación con los datos necesarios</param>
-        /// <returns>Un <see cref="string"> con la solicitud de autenticación en formato XML</returns>
+        /// <returns>Un <see cref="string"/> con la solicitud de autenticación en formato XML</returns>
         public static string GenerarSolicitudAutenticacion(Autenticacion request)
         {
             XmlDocument xml = new XmlDocument();

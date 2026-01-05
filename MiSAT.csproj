@@ -9,10 +9,11 @@
     <PackageProjectUrl>https://github.com/ricardomiss/MISAT</PackageProjectUrl>
     <Description>Librería para uso de los servicios del SAT</Description>
     <PackAsTool>False</PackAsTool>
-    <VersionPrefix>1.1.1</VersionPrefix>
+    <VersionPrefix>1.1.2</VersionPrefix>
     <Authors>Ricardo Miss</Authors>
     <RepositoryUrl>https://github.com/ricardomiss/MISAT</RepositoryUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
