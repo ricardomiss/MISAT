@@ -22,13 +22,13 @@ namespace MiSAT.Models
         public string SignatureValue { get; private set; }
         public string CertificateBase64 => Convert.ToBase64String(Certificado.RawData);
         public Autenticacion()
-        {
-            UUID = $"uuid-{Guid.NewGuid().ToString()}-4";
+        {   
+            UUID = $"uuid-{Guid.NewGuid().ToString()}-1";
         }
 
         internal void GenerarDigestValue(string node)
         {
-            byte[] data = Encoding.UTF8.GetBytes(node);
+            byte[] data = Encoding.Default.GetBytes(node);
             using (var sha1 = SHA1.Create())
             {
                 DigestValue = Convert.ToBase64String(sha1.ComputeHash(data));
