@@ -56,6 +56,25 @@ namespace MiSAT.Models
     }
 
     /// <summary>
+    /// Los estados de los Comprobantes a solicitar su descarga.
+    /// </summary>
+    public static class EstadosComprobante
+    {
+        /// <summary>
+        /// Comprobantes Vigentes
+        /// </summary>
+        public const string Vigente = "Vigente";
+        /// <summary>
+        /// Comprobantes Cancelados
+        /// </summary>
+        public const string Cancelado = "Cancelado";
+        /// <summary>
+        /// Todos los Comprobantes
+        /// </summary>
+        public const string Todos = "Todos";
+    }
+
+    /// <summary>
     /// Representa la información de autenticación que incluye los detalles del certificado, el período de validez 
     /// y los datos de la firma digital.
     /// </summary>
