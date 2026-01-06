@@ -29,6 +29,33 @@ namespace MiSAT.Models
     }
 
     /// <summary>
+    /// Tipo de Comprobante a solicitar su descarga.
+    /// </summary>
+    public static class TiposComprobante
+    {
+        /// <summary>
+        /// Ingreso
+        /// </summary>
+        public const string Ingreso = "I";
+        /// <summary>
+        /// Egreso
+        /// </summary>
+        public const string Egreso = "E";
+        /// <summary>
+        /// Traslado
+        /// </summary>
+        public const string Traslado = "T";
+        /// <summary>
+        /// Nómina
+        /// </summary>
+        public const string Nomina = "N";
+        /// <summary>
+        /// Pago
+        /// </summary>
+        public const string Pago = "P";
+    }
+
+    /// <summary>
     /// Representa la información de autenticación que incluye los detalles del certificado, el período de validez 
     /// y los datos de la firma digital.
     /// </summary>
