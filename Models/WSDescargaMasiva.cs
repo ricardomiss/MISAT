@@ -75,6 +75,48 @@ namespace MiSAT.Models
     }
 
     /// <summary>
+    /// Los complementos asociados a los Comprobantes.
+    /// </summary>
+    public static class Complementos
+    {
+        public const string AcreditamientoIEPS = "acreditamientoieps10";
+        public const string Aerolineas = "aerolineas";
+        public const string CertificadoDeDestruccion = "certificadodedestruccion";
+        public const string RegistroFiscal = "cfdiregistrofiscal";
+        public const string ComercioExterior = "comercioexterior10";
+        public const string ComercioExterior11 = "comercioexterior11";
+        public const string Comprobante = "comprobante";
+        public const string ConsumoDeCombustibles = "consumodecombustibles";
+        public const string ConsumoDeCombustibles11 = "consumodecombustibles11";
+        public const string Detallista = "detallista";
+        public const string Divisas = "divisas";
+        public const string Donat11 = "donat11";
+        public const string Ecc11 = "ecc11";
+        public const string Ecc12 = "ecc12";
+        public const string GastosHidrocarburos10 = "gastoshidrocarburos10";
+        public const string Iedu = "iedu";
+        public const string Implocal = "implocal";
+        public const string INE = "ine11";
+        public const string IngresosHidrocarburos = "ingresoshidrocarburos";
+        public const string LeyendasFisc = "leyendasfisc";
+        public const string Nomina11 = "nomina11";
+        public const string Nomina12 = "nomina12";
+        public const string NotariosPublicos = "notariospublicos";
+        public const string ObrasArteAntiguedades = "obrasarteantiguedades";
+        public const string PagoEnEspecie = "pagoenespecie";
+        public const string Pagos = "Pagos10";
+        public const string Pfic = "pfic";
+        public const string RenovacionYSustitucionVehiculos = "renovacionysustitucionvehiculos";
+        public const string ServicioParcialConstruccion = "servicioparcialconstruccion";
+        public const string SPEI = "spei";
+        public const string Terceros11 = "terceros11";
+        public const string TuristaPasajeroExtranjero = "turistapasajeroextranjero";
+        public const string ValesDeDespensa = "valesdedespensa";
+        public const string VehiculoUsado = "vehiculousado";
+        public const string VentaVehiculos11 = "ventavehiculos11";
+    }
+
+    /// <summary>
     /// Representa la información de autenticación que incluye los detalles del certificado, el período de validez 
     /// y los datos de la firma digital.
     /// </summary>
