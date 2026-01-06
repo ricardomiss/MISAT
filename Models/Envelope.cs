@@ -17,6 +17,10 @@ namespace MiSAT.Models
     {
         [XmlElement(ElementName = "Autentica", Namespace = "http://DescargaMasivaTerceros.gob.mx")]
         public Autentica Autentica { get; set; }
+        [XmlElement(ElementName = "AutenticaResponse", Namespace = "http://DescargaMasivaTerceros.gob.mx")]
+        public AutenticaResponse AutenticaResponse { get; set; }
+        [XmlElement(ElementName = "Fault", Namespace = WSNamespaces.s)]
+        public Fault Fault { get; set; }
     }
 
     public class Autentica

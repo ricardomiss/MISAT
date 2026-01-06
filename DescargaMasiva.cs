@@ -90,6 +90,36 @@ namespace MiSAT
             return ForzarAtributos(xml);
         }
 
+        /// <summary>
+        /// Deserializa un documento XML en un objeto Envelope que representa la respuesta de autenticación.
+        /// </summary>
+        /// <param name="xmlContent">El documento XML que contiene la respuesta de autenticación.</param>
+        /// <returns>Un objeto <see cref="Envelope"/> que representa la respuesta de autenticación deserializada.</returns>
+        /// <exception cref="InvalidOperationException">Se lanza si el documento XML no tiene un elemento raíz o si no se puede deserializar la respuesta de autenticación.</exception>
+        public static Envelope DeserializarAutenticacion(XmlDocument xmlContent)
+        {
+            var root = xmlContent.DocumentElement ?? throw new InvalidOperationException("El documento XML no tiene un elemento raíz.");
+            XmlSerializer serializer = new XmlSerializer(typeof(Envelope));
+            using var reader = new XmlNodeReader(xmlContent);
+            if (serializer.Deserialize(reader) is not Envelope envelope)
+                throw new InvalidOperationException("No se pudo deserializar la respuesta de autenticación.");
+            return envelope;
+        }
+
+        /// <summary>
+        /// Deserializa un documento XML en un objeto Envelope que representa la respuesta de autenticación.
+        /// </summary>
+        /// <param name="xmlContent">El documento XML que contiene la respuesta de autenticación.</param>
+        /// <returns>Un objeto <see cref="Envelope"/> que representa la respuesta de autenticación deserializada.</returns>
+        public static Envelope DeserializarAutenticacion(string xmlContent)
+        {
+            if (string.IsNullOrWhiteSpace(xmlContent))
+                return new Envelope();
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xmlContent);
+            return DeserializarAutenticacion(xmlDoc);
+        }
+
         private static string GetNodeTimestamp(Timestamp timestamp)
         {
             XmlDocument xml = new XmlDocument();
