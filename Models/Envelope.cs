@@ -15,9 +15,9 @@ namespace MiSAT.Models
     [XmlRoot(ElementName = "Body")]
     public class Body
     {
-        [XmlElement(ElementName = "Autentica", Namespace = "http://DescargaMasivaTerceros.gob.mx")]
+        [XmlElement(ElementName = "Autentica", Namespace = WSNamespaces.dmt)]
         public Autentica Autentica { get; set; }
-        [XmlElement(ElementName = "AutenticaResponse", Namespace = "http://DescargaMasivaTerceros.gob.mx")]
+        [XmlElement(ElementName = "AutenticaResponse", Namespace = WSNamespaces.dmt)]
         public AutenticaResponse AutenticaResponse { get; set; }
         [XmlElement(ElementName = "Fault", Namespace = WSNamespaces.s)]
         public Fault Fault { get; set; }

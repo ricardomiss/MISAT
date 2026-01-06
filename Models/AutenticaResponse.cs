@@ -2,7 +2,7 @@
 
 namespace MiSAT.Models
 {
-    [XmlRoot(ElementName = "AutenticaResponse", Namespace = "http://DescargaMasivaTerceros.gob.mx")]
+    [XmlRoot(ElementName = "AutenticaResponse", Namespace = WSNamespaces.dmt)]
     public class AutenticaResponse
     {
         [XmlElement(ElementName = "AutenticaResult")]
