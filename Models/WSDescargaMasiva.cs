@@ -14,6 +14,21 @@ namespace MiSAT.Models
     }
 
     /// <summary>
+    /// Tipo de Documentos a solicitar su descarga.
+    /// </summary>
+    public static class TiposSolicitud
+    {
+        /// <summary>
+        /// Comprobante Fiscal Digital por Internet.
+        /// </summary>
+        public const string CFDI = "CFDI";
+        /// <summary>
+        /// Información básica de identificación de las facturas. 
+        /// </summary>
+        public const string Metadata = "Metadata";
+    }
+
+    /// <summary>
     /// Representa la información de autenticación que incluye los detalles del certificado, el período de validez 
     /// y los datos de la firma digital.
     /// </summary>
