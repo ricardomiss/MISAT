@@ -14,6 +14,7 @@
     <RepositoryUrl>https://github.com/ricardomiss/MISAT</RepositoryUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <PackageTags>SAT; WebService; CFDI; </PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
