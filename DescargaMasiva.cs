@@ -2,6 +2,7 @@
 using System.Xml;
 using System.Xml.Serialization;
 using System.Text.RegularExpressions;
+using MiSAT.Utilities;
 
 namespace MiSAT
 {
@@ -22,8 +23,8 @@ namespace MiSAT
 
             Timestamp timestamp = new Timestamp
             {
-                Created = request.FechaInicial.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                Expires = request.FechaFinal.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                Created = request.FechaInicial.ToXmlStringUtc(),
+                Expires = request.FechaFinal.ToXmlStringUtc()
             };
             request.GenerarDigestValue(GetNodeTimestamp(timestamp));
             
