@@ -152,7 +152,21 @@ namespace MiSAT.Models
                 SignatureValue = Convert.ToBase64String(signature);
             }
         }
+    }
 
+    /// <summary>
+    /// Representa una solicitud base para la solicitud de descarga de documentos, proporcionando información de certificado y
+    /// solicitante requerida para la validación.
+    /// </summary>
+    public abstract class SolicitudDescarga
+    {
+        public string RfcSolicitante { get; set; }
+        public X509Certificate2 Certificado { get; set; }
+        public string DatosCertificado  { get; private set; }
+        public string NumeroCertificado  { get; private set; }
+        public string DigestValue { get; private set; }
+        public string SignatureValue  { get; private set; }
 
+        internal abstract bool Validar();
     }
 }
