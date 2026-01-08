@@ -11,6 +11,7 @@ namespace MiSAT.Models
         internal const string s = "http://schemas.xmlsoap.org/soap/envelope/";
         internal const string o = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
         internal const string dmt = "http://DescargaMasivaTerceros.gob.mx";
+        internal const string dmt2 = "http://DescargaMasivaTerceros.sat.gob.mx";
     }
 
     /// <summary>
@@ -160,12 +161,8 @@ namespace MiSAT.Models
     /// </summary>
     public abstract class SolicitudDescarga
     {
-        public string RfcSolicitante { get; set; }
-        public X509Certificate2 Certificado { get; set; }
-        public string DatosCertificado  { get; private set; }
-        public string NumeroCertificado  { get; private set; }
-        public string DigestValue { get; private set; }
-        public string SignatureValue  { get; private set; }
+        public string RfcSolicitante { get; protected set; }
+        public X509Certificate2 Certificado { get; protected set; }
 
         internal abstract bool Validar();
     }
