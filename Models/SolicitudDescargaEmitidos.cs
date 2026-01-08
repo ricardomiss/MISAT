@@ -56,13 +56,18 @@ namespace MiSAT.Models
         /// <paramref name="fechaInicial"/>.</param>
         /// <param name="rfcEmisor">El RFC del emisor cuyos documentos se descargarán.</param>
         /// <param name="certificado">El certificado X.509 utilizado para autenticar la solicitud.</param>
-        public SolicitudDescargaEmitidos(DateTime fechaInicial, DateTime fechaFinal, string rfcEmisor, X509Certificate2 certificado) : base()
+        /// <param name="estadoComprobante">El estado del comprobante a consultar.</param>
+        /// <param name="tipoSolicitud">El tipo de datos a solicitar.</param>
+        public SolicitudDescargaEmitidos(DateTime fechaInicial, DateTime fechaFinal, string rfcEmisor, X509Certificate2 certificado,
+            string estadoComprobante = EstadosComprobante.Vigente, string tipoSolicitud = TiposSolicitud.CFDI) : base()
         {
             FechaInicial = fechaInicial;
             FechaFinal = fechaFinal;
             RfcEmisor = rfcEmisor;
             RfcSolicitante = rfcEmisor;
             Certificado = certificado;
+            EstadoComprobante = estadoComprobante;
+            TipoSolicitud = tipoSolicitud;
         }
 
         internal override bool Validar()

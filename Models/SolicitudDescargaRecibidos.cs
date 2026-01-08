@@ -26,7 +26,7 @@ namespace MiSAT.Models
         /// <summary>
         /// Tipo de solicitud para la descarga.
         /// </summary>
-        public string TipoSolicitud { get; set; } = TiposSolicitud.CFDI;
+        public string TipoSolicitud { get; set; }
         /// <summary>
         /// Tipo de comprobante a consultar.
         /// </summary>
@@ -34,7 +34,7 @@ namespace MiSAT.Models
         /// <summary>
         /// Estado del comprobante a consultar.
         /// </summary>
-        public string EstadoComprobante { get; set; } = EstadosComprobante.Vigente;
+        public string EstadoComprobante { get; set; }
         /// <summary>
         /// RFC del a cuenta a tercero del cual se quiere consultar los CFDIs
         /// </summary>
@@ -56,13 +56,19 @@ namespace MiSAT.Models
         /// <paramref name="fechaInicial"/>.</param>
         /// <param name="rfcReceptor">El RFC del receptor cuyos documentos se descargarán.</param>
         /// <param name="certificado">El certificado X.509 utilizado para autenticar la solicitud.</param>
-        public SolicitudDescargaRecibidos(DateTime fechaInicial, DateTime fechaFinal, string rfcReceptor, X509Certificate2 certificado) : base() 
+        /// <param name="estadoComprobante">El estado del comprobante a consultar.</param>
+        /// <param name="tipoSolicitud">El tipo de datos a solicitar.</param>
+        public SolicitudDescargaRecibidos(
+            DateTime fechaInicial, DateTime fechaFinal, string rfcReceptor, X509Certificate2 certificado, 
+            string estadoComprobante = EstadosComprobante.Vigente, string tipoSolicitud = TiposSolicitud.CFDI) : base() 
         {
             FechaInicial = fechaInicial;
             FechaFinal = fechaFinal;
             RfcReceptor = rfcReceptor;
             RfcSolicitante = rfcReceptor;
             Certificado = certificado;
+            EstadoComprobante = estadoComprobante;
+            TipoSolicitud = tipoSolicitud;
         }
 
         internal override bool Validar()

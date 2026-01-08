@@ -21,6 +21,34 @@ namespace MiSAT.Models
         public AutenticaResponse AutenticaResponse { get; set; }
         [XmlElement(ElementName = "Fault", Namespace = WSNamespaces.s)]
         public Fault Fault { get; set; }
+        [XmlElement(ElementName = "SolicitaDescargaEmitidos", Namespace = WSNamespaces.dmt2)]
+        public SolicitaDescargaEmitidos SolicitaDescargaEmitidos { get; set; }
+        [XmlElement(ElementName = "SolicitaDescargaRecibidos", Namespace = WSNamespaces.dmt2)]
+        public SolicitaDescargaRecibidos SolicitaDescargaRecibidos { get; set; }
+        [XmlElement(ElementName = "SolicitaDescargaFolio", Namespace = WSNamespaces.dmt2)]
+        public SolicitaDescargaFolio SolicitaDescargaFolio { get; set; }
+    }
+
+    public abstract class SolicitaDescarga
+    {
+        [XmlElement(ElementName = "solicitud", Namespace = WSNamespaces.dmt2)]
+        public solicitud Solicitud { get; set; }
+
+    }
+
+    [XmlRoot(ElementName = "SolicitaDescargaEmitidos", Namespace = WSNamespaces.dmt2)]
+    public class SolicitaDescargaEmitidos : SolicitaDescarga
+    {
+    }
+
+    [XmlRoot(ElementName = "SolicitaDescargaRecibidos", Namespace = WSNamespaces.dmt2)]
+    public class SolicitaDescargaRecibidos : SolicitaDescarga
+    {
+    }
+
+    [XmlRoot(ElementName = "SolicitaDescargaFolio", Namespace = WSNamespaces.dmt2)]
+    public class SolicitaDescargaFolio : SolicitaDescarga
+    {
     }
 
     public class Autentica
