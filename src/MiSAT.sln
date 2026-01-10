@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.36804.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiSAT", "MiSAT.csproj", "{8EB01B30-05A5-4751-87F3-1B2E84095C29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "..\UnitTest\UnitTest.csproj", "{5FE9049A-F7B6-4F00-B1AC-EC614DBD81D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "..\..\UnitTest\UnitTest.csproj", "{5FE9049A-F7B6-4F00-B1AC-EC614DBD81D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
