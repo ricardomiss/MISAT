@@ -29,8 +29,8 @@ export default defineConfig({
             text: 'Descarga Masiva', 
             items: [
               { text: 'Generar Solicitud Autenticacion', link: '/api/generar-solicitud-autenticacion' },
-              { text: 'Generar Solicitud Descarga', link: '/api/generar-solicitud-descarga' },
-              { text: 'Deserializar Autenticacion', link: '/api/deserializar-autenticacion' }
+              { text: 'Deserializar Autenticacion', link: '/api/deserializar-autenticacion' },
+              { text: 'Generar Solicitud Descarga', link: '/api/generar-solicitud-descarga' }
             ]
           }
         ]
@@ -39,7 +39,14 @@ export default defineConfig({
         text: 'Modelos',
         link: '/models/',
         items: [
-          { text: 'Comprobante', link: '/models/cfdi' },
+          { text: 'Comprobante', link: '/models/comprobante' },
+          { text: 'Envelope', link: '/models/envelope' },
+          { text: 'Solicitud Descarga', link: '/models/solicitud-descarga', 
+            items: [
+              { text: 'Solicitud Descarga Emitidos', link: '/models/solicitud-descarga-emitidos' },
+              { text: 'Solicitud Descarga Recibidos', link: '/models/solicitud-descarga-recibidos' },
+              { text: 'Solicitud Descarga Folio', link: '/models/solicitud-descarga-folio' }
+          ]}
         ]
       }
     ],
