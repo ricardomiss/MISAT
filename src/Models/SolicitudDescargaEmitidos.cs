@@ -26,7 +26,7 @@ namespace MiSAT.Models
         /// <summary>
         /// Tipo de solicitud para la descarga.
         /// </summary>
-        public string TipoSolicitud { get; set; } = TiposSolicitud.CFDI;
+        public string TipoSolicitud { get; set; }
         /// <summary>
         /// Tipo de comprobante a consultar.
         /// </summary>
@@ -34,7 +34,7 @@ namespace MiSAT.Models
         /// <summary>
         /// Estado del comprobante a consultar.
         /// </summary>
-        public string EstadoComprobante { get; set; } = EstadosComprobante.Vigente;
+        public string EstadoComprobante { get; set; }
         /// <summary>
         /// RFC del a cuenta a tercero del cual se quiere consultar los CFDIs
         /// </summary>
