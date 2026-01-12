@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: "MiSAT"
-  text: "Documentación para el uso de la libreria MiSAT"
-  tagline: "Librería para uso de los servicios del SAT"
+  text: "Librería para uso de los servicios del SAT"
+  tagline: "Documentación para el uso de la libreria MiSAT"
   actions:
     - theme: brand
       text: Inicio Rápido

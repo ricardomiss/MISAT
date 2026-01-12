@@ -1,0 +1,2 @@
+# Modelos
+En esta sección se describen los modelos de datos utilizados en la librería MiSAT para representar diferentes entidades relacionadas con los servicios del SAT, como CFDI, Solicitudes del Web Service, y otros elementos relevantes.
