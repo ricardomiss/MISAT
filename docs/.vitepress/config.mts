@@ -53,7 +53,8 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/ricardomiss/MISAT' }
+      { icon: 'github', link: 'https://github.com/ricardomiss/MISAT' },
+      { icon: 'nuget', link: 'https://www.nuget.org/packages/MiSAT' }
     ],
     footer: {
       message: 'Released under the <a href="https://github.com/ricardomiss/MISAT/blob/master/LICENSE.txt">MIT</a> License.<br/>Made with ❤️ by <a href="https://github.com/ricardomiss">Ricardo Miss</a> and Powered by <a href="https://vitepress.vuejs.org/">VitePress</a>',
