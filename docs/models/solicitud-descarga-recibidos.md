@@ -1,5 +1,5 @@
 # Solicitud Descarga Recibidos
-Esta clase representa los datos a solicitar para descargar los CFDI recibidos por un contribuyente específico, utilizado para la API [Generar Solicitud de Descarga](/api/generar-solicitud-descarga/).
+Esta clase representa los datos a solicitar para descargar los CFDI recibidos por un contribuyente específico, utilizado para la API [Generar Solicitud de Descarga](/api/generar-solicitud-descarga).
 
 ## Creacion de la Instancia
 Para crear una instancia de `SolicitudDescargaRecibidos`, se requiere proporcionar los siguientes parámetros:
