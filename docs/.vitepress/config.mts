@@ -7,7 +7,8 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Documentacion', link: '/api/' }
+      { text: 'Documentacion', link: '/api/' },
+      { text: 'v1.3.0' , link: ''},
     ],
 
     sidebar: [
@@ -30,7 +31,8 @@ export default defineConfig({
             items: [
               { text: 'Generar Solicitud Autenticacion', link: '/api/generar-solicitud-autenticacion' },
               { text: 'Deserializar Autenticacion', link: '/api/deserializar-autenticacion' },
-              { text: 'Generar Solicitud Descarga', link: '/api/generar-solicitud-descarga' }
+              { text: 'Generar Solicitud Descarga', link: '/api/generar-solicitud-descarga' },
+              { text: 'Deserializar Descarga', link: '/api/deserializar-descarga' }
             ]
           }
         ]
@@ -46,7 +48,8 @@ export default defineConfig({
             items: [
               { text: 'Solicitud Descarga Emitidos', link: '/models/solicitud-descarga-emitidos' },
               { text: 'Solicitud Descarga Recibidos', link: '/models/solicitud-descarga-recibidos' },
-              { text: 'Solicitud Descarga Folio', link: '/models/solicitud-descarga-folio' }
+              { text: 'Solicitud Descarga Folio', link: '/models/solicitud-descarga-folio' },
+              { text: 'Solicitud Descarga Result', link: '/models/solicita-descarga-result' }
           ]}
         ]
       }
