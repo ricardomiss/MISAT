@@ -7,13 +7,22 @@ public static Envelope DeserializarAutenticacion(XmlDocument xmlContent);
 
 ## Ejemplo de Uso
 ```csharp
-string xmlResponse = "<s:Envelope>...</s:Envelope>"; // Respuesta XML del servicio de autenticación
-Envelope autenticacionResponse = DescargaMasiva.DeserializarAutenticacion(xmlResponse);
-Console.WriteLine($"Token: {autenticacionResponse.Body.AutenticaResponse.AutenticaResult}");
+using MiSAT;
+using MiSAT.Models;
 
-XmlDocument xmlDocResponse = new XmlDocument();
-xmlDocResponse.LoadXml(xmlResponse);
-Envelope autenticacionResponseFromDoc = DescargaMasiva.DeserializarAutenticacion(xmlDocResponse);
-Console.WriteLine($"Token desde XmlDocument: {autenticacionResponseFromDoc.Body.AutenticaResponse.AutenticaResult}");
+class Program
+{
+    static void Main(string[] args)
+    {
+        string xmlResponse = "<s:Envelope>...</s:Envelope>"; // Respuesta XML del servicio autenticación
+        Envelope autenticacionResponse = DescargaMasiva.DeserializarAutenticacion(xmlResponse);
+        Console.WriteLine($"Token: {autenticacionResponse.Body.AutenticaResponse.AutenticaResult}");
+
+        XmlDocument xmlDocResponse = new XmlDocument();
+        xmlDocResponse.LoadXml(xmlResponse);
+        Envelope autenticacionResponseFromDoc = DescargaMasiva.DeserializarAutenticacion(xmlDocResponse);
+        Console.WriteLine($"Token desde XmlDocument: {autenticacionResponseFromDoc.Body.AutenticaResponse.AutenticaResult}");
+    }
+}
 ```
 El resultado es un objeto `Envelope` que contiene la información de la respuesta de autenticación, incluyendo el token necesario para realizar descargas masivas. Para más detalles sobre el objeto `Envelope`, consulta la sección de [Modelos](/models/).

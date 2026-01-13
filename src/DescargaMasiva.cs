@@ -99,15 +99,7 @@ namespace MiSAT
         /// <param name="xmlContent">El documento XML que contiene la respuesta de autenticación.</param>
         /// <returns>Un objeto <see cref="Envelope"/> que representa la respuesta de autenticación deserializada.</returns>
         /// <exception cref="InvalidOperationException">Se lanza si el documento XML no tiene un elemento raíz o si no se puede deserializar la respuesta de autenticación.</exception>
-        public static Envelope DeserializarAutenticacion(XmlDocument xmlContent)
-        {
-            var root = xmlContent.DocumentElement ?? throw new InvalidOperationException("El documento XML no tiene un elemento raíz.");
-            XmlSerializer serializer = new XmlSerializer(typeof(Envelope));
-            using var reader = new XmlNodeReader(xmlContent);
-            if (serializer.Deserialize(reader) is not Envelope envelope)
-                throw new InvalidOperationException("No se pudo deserializar la respuesta de autenticación.");
-            return envelope;
-        }
+        public static Envelope DeserializarAutenticacion(XmlDocument xmlContent) => DeserializarEnvelope(xmlContent);
 
         /// <summary>
         /// Deserializa un documento XML en un objeto Envelope que representa la respuesta de autenticación.
@@ -120,7 +112,28 @@ namespace MiSAT
                 return new Envelope();
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(xmlContent);
-            return DeserializarAutenticacion(xmlDoc);
+            return DeserializarEnvelope(xmlDoc);
+        }
+
+        /// <summary>
+        /// Deserializa un documento XML en un objeto Envelope que representa la respuesta de descarga.
+        /// </summary>
+        /// <param name="xmlContent">El documento XML que contiene la respuesta de descarga.</param>
+        /// <returns>Un objeto <see cref="Envelope"/> que representa la respuesta de descarga deserializada.</returns>
+        public static Envelope DeserializarDescarga(XmlDocument xmlContent) => DeserializarEnvelope(xmlContent);
+
+        /// <summary>
+        /// Deserializa un documento XML en un objeto Envelope que representa la respuesta de descarga.
+        /// </summary>
+        /// <param name="xmlContent">El documento XML que contiene la respuesta de descarga.</param>
+        /// <returns>Un objeto <see cref="Envelope"/> que representa la respuesta de descarga deserializada.</returns>
+        public static Envelope DeserializarDescarga(string xmlContent)
+        {
+            if (string.IsNullOrWhiteSpace(xmlContent))
+                return new Envelope();
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xmlContent);
+            return DeserializarEnvelope(xmlDoc);
         }
 
         /// <summary>
@@ -163,6 +176,16 @@ namespace MiSAT
             XmlElement signature = strategy.GenerarNodoSignature(solicitudNode);
             sol.Signature = signature;
             return strategy.GenerarSolicitudXML(sol).OuterXml;
+        }
+
+        private static Envelope DeserializarEnvelope(XmlDocument xml)
+        {
+            var root = xml.DocumentElement ?? throw new InvalidOperationException("El documento XML no tiene un elemento raíz.");
+            XmlSerializer serializer = new XmlSerializer(typeof(Envelope));
+            using var reader = new XmlNodeReader(xml);
+            if (serializer.Deserialize(reader) is not Envelope envelope)
+                throw new InvalidOperationException("No se pudo deserializar el sobre SOAP.");
+            return envelope;
         }
 
         private static string GetNodeTimestamp(Timestamp timestamp)
