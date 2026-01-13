@@ -41,6 +41,7 @@ export default defineConfig({
         items: [
           { text: 'Comprobante', link: '/models/comprobante' },
           { text: 'Envelope', link: '/models/envelope' },
+          { text: 'Autenticacion', link: '/models/autenticacion' },
           { text: 'Solicitud Descarga', link: '/models/solicitud-descarga', 
             items: [
               { text: 'Solicitud Descarga Emitidos', link: '/models/solicitud-descarga-emitidos' },

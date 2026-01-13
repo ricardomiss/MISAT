@@ -29,6 +29,6 @@ class Program
     }
 }
 ```
-Este código crea una solicitud de autenticación utilizando un certificado digital y un rango de fechas. La solicitud se genera en formato XML y se imprime en la consola.
+En este ejemplo, se crea una solicitud de autenticación proporcionando la fecha inicial y final para la validez del token, así como el certificado `X509Certificate2` del contribuyente. La solicitud se genera en formato XML y se imprime en la consola.
 ## Documentación Adicional
 Para más detalles sobre las funcionalidades de MiSAT, consulta la [Documentación API](/api/).
