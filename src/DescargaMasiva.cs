@@ -147,6 +147,24 @@ namespace MiSAT
         public static string GenerarSolicitudDescarga(SolicitudDescargaFolio solicitud) 
             => SolicitudDescarga(solicitud);
 
+        public static Envelope DeserializarDescarga(XmlDocument xml)
+        {
+            var root = xml.DocumentElement ?? throw new InvalidOperationException("El documento XML no tiene un elemento raíz.");
+            XmlSerializer serializer = new XmlSerializer(typeof(Envelope));
+            using var reader = new XmlNodeReader(xml);
+            if (serializer.Deserialize(reader) is not Envelope envelope)
+                throw new InvalidOperationException("No se pudo deserializar la respuesta de descarga.");
+            return envelope;
+        }
+        public static Envelope DeserializarDescarga(string xmlContent)
+        {
+            if (string.IsNullOrWhiteSpace(xmlContent))
+                return new Envelope();
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xmlContent);
+            return DeserializarDescarga(xmlDoc);
+        }
+
         private static string SolicitudDescarga(SolicitudDescarga solicitud)
         {
             ISolicitudDescargaStrategy strategy = solicitud switch
