@@ -190,6 +190,28 @@ namespace MiSAT
             return envelope.OuterXml;
         }
 
+        /// <summary>
+        /// Deserializa un documento XML en un objeto <see cref="Envelope"/> que representa la respuesta de verificación.
+        /// </summary>
+        /// <param name="xmlContent">El documento XML que contiene la respuesta de verificación.</param>
+        /// <returns>Un objeto <see cref="Envelope"/> que representa la respuesta de verificación deserializada.</returns>
+        public static Envelope DeserializarVerificacion(XmlDocument xmlContent) => DeserializarEnvelope(xmlContent);
+
+        /// <summary>
+        /// Deserializa un documento XML en un objeto <see cref="Envelope"/> que representa la respuesta de verificación.
+        /// </summary>
+        /// <param name="xmlContent">El documento XML que contiene la respuesta de verificación.</param>
+        /// <returns>Un objeto <see cref="Envelope"/> que representa la respuesta de verificación deserializada.</returns>
+        public static Envelope DeserializarVerificacion(string xmlContent)
+        {
+            if (string.IsNullOrWhiteSpace(xmlContent))
+                return new Envelope();
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xmlContent);
+            return DeserializarEnvelope(xmlDoc);
+        }
+
+
         private static string SolicitudDescarga(SolicitudDescarga solicitud)
         {
             ISolicitudDescargaStrategy strategy = solicitud switch
