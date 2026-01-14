@@ -224,8 +224,8 @@ namespace MiSAT
 
             solicitud.Validar();
             solicitud sol = strategy.GenerarSolicitud();
-            XmlElement solicitudNode = strategy.GenerarNodoSolicitud(sol);
-            XmlElement signature = strategy.GenerarNodoSignature(solicitudNode);
+            XmlElement solicitudNode = sol.GetNodoSolicitud();
+            XmlElement signature = XmlGeneratorUtility.GetNodoFirmado(solicitudNode, solicitud.Certificado);
             sol.Signature = signature;
             return strategy.GenerarSolicitudXML(sol).OuterXml;
         }
