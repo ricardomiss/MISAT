@@ -116,6 +116,36 @@ namespace MiSAT.Models
         public const string VehiculoUsado = "vehiculousado";
         public const string VentaVehiculos11 = "ventavehiculos11";
     }
+    /// <summary>
+    /// Representa los estados de la solicitud de descarga de datos.
+    /// </summary>
+    public enum EstadosSolicitud
+    {
+        /// <summary>
+        /// La solicitud ha sido aceptada para su procesamiento.
+        /// </summary>
+        Aceptada = 1,
+        /// <summary>
+        /// La solicitud está actualmente en proceso de descarga.
+        /// </summary>
+        EnProceso = 2,
+        /// <summary>
+        /// La solicitud ha sido completada.
+        /// </summary>
+        Terminada = 3,
+        /// <summary>
+        /// La solicitud ha encontrado un error.
+        /// </summary>
+        Error = 4,
+        /// <summary>
+        /// La solicitud ha sido rechazada.
+        /// </summary>
+        Rechazada = 5,
+        /// <summary>
+        /// La solicitud ha expirado.
+        /// </summary>
+        Vencida = 6
+    }
 
     /// <summary>
     /// Representa la información de autenticación que incluye los detalles del certificado, el período de validez 
@@ -165,5 +195,31 @@ namespace MiSAT.Models
         public X509Certificate2 Certificado { get; protected set; }
 
         internal abstract bool Validar();
+    }
+
+    /// <summary>
+    /// Representa una solicitud para la verificación de la disponibilidad de documentos para descarga.
+    /// </summary>
+    public class SolicitudVerificacion
+    {
+        /// <summary>
+        /// Identificador único de la solicitud de descarga.
+        /// </summary>
+        public string IdSolicitud { get; set; }
+        /// <summary>
+        /// RFC del solicitante de la descarga.
+        /// </summary>
+        public string RfcSolicitante { get; set; }
+        /// <summary>
+        /// Certificado X.509 utilizado para autenticar la solicitud.
+        /// </summary>
+        public X509Certificate2 Certificado { get; protected set; }
+
+        public SolicitudVerificacion(string idSolicitud, string rfcSolicitante, X509Certificate2 certificado)
+        {
+            IdSolicitud = idSolicitud;
+            RfcSolicitante = rfcSolicitante;
+            Certificado = certificado;
+        }
     }
 }

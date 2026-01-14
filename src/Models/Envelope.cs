@@ -33,6 +33,8 @@ namespace MiSAT.Models
         public SolicitaDescargaRecibidosResponse SolicitaDescargaRecibidosResponse { get; set; }
         [XmlElement(ElementName = "SolicitaDescargaFolioResponse", Namespace = WSNamespaces.dmt2)]
         public SolicitaDescargaFolioResponse SolicitaDescargaFolioResponse { get; set; }
+        [XmlElement(ElementName = "VerificaSolicitudDescarga", Namespace = WSNamespaces.dmt2)]
+        public VerificaSolicitudDescarga VerificaSolicitudDescarga { get; set; }
 
     }
 
@@ -55,6 +57,11 @@ namespace MiSAT.Models
 
     [XmlRoot(ElementName = "SolicitaDescargaFolio", Namespace = WSNamespaces.dmt2)]
     public class SolicitaDescargaFolio : SolicitaDescarga
+    {
+    }
+
+    [XmlRoot(ElementName = "VerificaSolicitudDescarga", Namespace = WSNamespaces.dmt2)]
+    public class VerificaSolicitudDescarga : SolicitaDescarga
     {
     }
 
