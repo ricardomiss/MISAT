@@ -1,6 +1,7 @@
 ﻿using MiSAT.Models;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
+using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -67,6 +68,54 @@ namespace MiSAT.Utilities
 
             signedXml.ComputeSignature();
             return signedXml.GetXml();
+        }
+ 
+        internal static string GetNodoFirmado(this Models.SignedInfo signedInfo)
+        {
+            XmlDocument xml = new XmlDocument();
+            XmlSerializer serializer = new XmlSerializer(typeof(Models.SignedInfo));
+            var namespaces = new XmlSerializerNamespaces();
+            namespaces.Add(string.Empty, "http://www.w3.org/2000/09/xmldsig#");
+            using (XmlWriter writer = xml.CreateNavigator().AppendChild())
+            {
+                serializer.Serialize(writer, signedInfo, namespaces);
+            }
+            var nsmgr = new XmlNamespaceManager(xml.NameTable);
+            var attr = xml.CreateAttribute("xmlns", "http://www.w3.org/2000/xmlns/");
+            attr.Value = "http://www.w3.org/2000/09/xmldsig#";
+            xml.DocumentElement.Attributes.Append(attr);
+            string raw = xml.OuterXml;
+            string pattern = @"<([\w:\.\-]+)([^>]*)\s*/>";
+            string replaced = Regex.Replace(raw, pattern, "<$1$2></$1>");
+            return replaced.Replace(" >", ">");
+
+        }
+
+        internal static string GetTimestamp(this Timestamp timestamp)
+        {
+            XmlDocument xml = new XmlDocument();
+            XmlSerializer serializer = new XmlSerializer(typeof(Timestamp));
+            var namespaces = new XmlSerializerNamespaces();
+            namespaces.Add("u", WSNamespaces.u);
+            using (XmlWriter writer = xml.CreateNavigator().AppendChild())
+            {
+                serializer.Serialize(writer, timestamp, namespaces);
+            }
+            var nsmgr = new XmlNamespaceManager(xml.NameTable);
+            nsmgr.AddNamespace("u", WSNamespaces.u);
+            var timestampNode = xml.DocumentElement;
+            if (timestampNode != null)
+            {
+                var idAttr = timestampNode.GetAttributeNode("Id");
+                if (idAttr != null)
+                {
+                    timestampNode.RemoveAttributeNode(idAttr);
+                    var attr = xml.CreateAttribute("u", "Id", WSNamespaces.u);
+                    attr.Value = idAttr.Value;
+                    timestampNode.Attributes.Append(attr);
+                }
+            }
+            return xml.OuterXml;
         }
     }
 }

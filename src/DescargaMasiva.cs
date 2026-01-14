@@ -2,7 +2,6 @@
 using MiSAT.Models;
 using MiSAT.Strategies;
 using MiSAT.Utilities;
-using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -28,7 +27,7 @@ namespace MiSAT
                 Created = request.FechaInicial.ToXmlStringUtc(),
                 Expires = request.FechaFinal.ToXmlStringUtc()
             };
-            request.GenerarDigestValue(GetNodeTimestamp(timestamp));
+            request.GenerarDigestValue(timestamp.GetTimestamp());
             
             SignedInfo signedInfo = new SignedInfo
             {
@@ -44,7 +43,7 @@ namespace MiSAT
                     DigestValue = request.DigestValue
                 }
             };
-            request.GenerarSignatureValue(GetNodeSignedInfo(signedInfo));
+            request.GenerarSignatureValue(signedInfo.GetNodoFirmado());
 
             Envelope envelope = new Envelope
             {
@@ -238,53 +237,6 @@ namespace MiSAT
             if (serializer.Deserialize(reader) is not Envelope envelope)
                 throw new InvalidOperationException("No se pudo deserializar el sobre SOAP.");
             return envelope;
-        }
-
-        private static string GetNodeTimestamp(Timestamp timestamp)
-        {
-            XmlDocument xml = new XmlDocument();
-            XmlSerializer serializer = new XmlSerializer(typeof(Timestamp));
-            var namespaces = new XmlSerializerNamespaces();
-            namespaces.Add("u", WSNamespaces.u);
-            using (XmlWriter writer = xml.CreateNavigator().AppendChild())
-            {
-                serializer.Serialize(writer, timestamp, namespaces);
-            }
-            var nsmgr = new XmlNamespaceManager(xml.NameTable);
-            nsmgr.AddNamespace("u", WSNamespaces.u);
-            var timestampNode = xml.DocumentElement;
-            if (timestampNode != null)
-            {
-                var idAttr = timestampNode.GetAttributeNode("Id");
-                if (idAttr != null)
-                {
-                    timestampNode.RemoveAttributeNode(idAttr);
-                    var attr = xml.CreateAttribute("u", "Id", WSNamespaces.u);
-                    attr.Value = idAttr.Value;
-                    timestampNode.Attributes.Append(attr);
-                }
-            }
-            return xml.OuterXml;
-        }
-
-        private static string GetNodeSignedInfo(SignedInfo signedInfo)
-        {
-            XmlDocument xml = new XmlDocument();
-            XmlSerializer serializer = new XmlSerializer(typeof(SignedInfo));
-            var namespaces = new XmlSerializerNamespaces();
-            namespaces.Add(string.Empty, "http://www.w3.org/2000/09/xmldsig#");
-            using (XmlWriter writer = xml.CreateNavigator().AppendChild())
-            {
-                serializer.Serialize(writer, signedInfo, namespaces);
-            }
-            var nsmgr = new XmlNamespaceManager(xml.NameTable);
-            var attr = xml.CreateAttribute("xmlns", "http://www.w3.org/2000/xmlns/");
-            attr.Value = "http://www.w3.org/2000/09/xmldsig#";
-            xml.DocumentElement.Attributes.Append(attr);
-            string raw = xml.OuterXml;
-            string pattern = @"<([\w:\.\-]+)([^>]*)\s*/>";
-            string replaced = Regex.Replace(raw, pattern, "<$1$2></$1>");
-            return replaced.Replace(" >", ">");
         }
 
         private static string ForzarAtributos(XmlDocument xml)
