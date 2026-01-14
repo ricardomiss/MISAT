@@ -183,6 +183,16 @@ namespace MiSAT.Models
                 SignatureValue = Convert.ToBase64String(signature);
             }
         }
+
+        internal void Validar()
+        {
+            if (FechaFinal <= FechaInicial)
+                throw new InvalidOperationException("La fecha final debe ser mayor a la fecha inicial.");
+            if (Certificado == null)
+                throw new InvalidOperationException("El certificado no puede ser nulo.");
+            if (!Certificado.HasPrivateKey)
+                throw new InvalidOperationException("El certificado debe contener la llave privada.");
+        }
     }
 
     /// <summary>
