@@ -33,6 +33,10 @@ namespace MiSAT.Models
         public SolicitaDescargaRecibidosResponse SolicitaDescargaRecibidosResponse { get; set; }
         [XmlElement(ElementName = "SolicitaDescargaFolioResponse", Namespace = WSNamespaces.dmt2)]
         public SolicitaDescargaFolioResponse SolicitaDescargaFolioResponse { get; set; }
+        [XmlElement(ElementName = "VerificaSolicitudDescarga", Namespace = WSNamespaces.dmt2)]
+        public VerificaSolicitudDescarga VerificaSolicitudDescarga { get; set; }
+        [XmlElement(ElementName = "VerificaSolicitudDescargaResponse", Namespace = WSNamespaces.dmt2)]
+        public VerificaSolicitudDescargaResponse VerificaSolicitudDescargaResponse { get; set; }
 
     }
 
@@ -57,6 +61,12 @@ namespace MiSAT.Models
     public class SolicitaDescargaFolio : SolicitaDescarga
     {
     }
+
+    [XmlRoot(ElementName = "VerificaSolicitudDescarga", Namespace = WSNamespaces.dmt2)]
+    public class VerificaSolicitudDescarga : SolicitaDescarga
+    {
+    }
+
 
     public class SolicitaDescargaResult
     {
@@ -89,6 +99,27 @@ namespace MiSAT.Models
     {
         [XmlElement(ElementName = "SolicitaDescargaFolioResult")]
         public SolicitaDescargaResult Result { get; set; }
+    }
+
+    public class VerificaSolicitudResult
+    {
+        [XmlAttribute(AttributeName = "CodEstatus")]
+        public int CodEstatus { get; set; }
+        [XmlAttribute(AttributeName = "EstadoSolicitud")]
+        public int EstadoSolicitud { get; set; }
+        [XmlAttribute(AttributeName = "CodigoEstadoSolicitud")]
+        public int CodigoEstadoSolicitud { get; set; }
+        [XmlAttribute(AttributeName = "NumeroCFDIs")]
+        public int NumeroCFDIs { get; set; }
+        [XmlAttribute(AttributeName = "Mensaje")]
+        public string Mensaje { get; set; }
+    }
+
+    [XmlRoot(ElementName = "VerificaSolicitudDescargaResponse", Namespace = WSNamespaces.dmt2)]
+    public class VerificaSolicitudDescargaResponse
+    {
+        [XmlElement(ElementName = "VerificaSolicitudDescargaResult")]
+        public VerificaSolicitudResult Result { get; set; }
     }
 
     public class Autentica

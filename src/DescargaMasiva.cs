@@ -116,27 +116,6 @@ namespace MiSAT
         }
 
         /// <summary>
-        /// Deserializa un documento XML en un objeto Envelope que representa la respuesta de descarga.
-        /// </summary>
-        /// <param name="xmlContent">El documento XML que contiene la respuesta de descarga.</param>
-        /// <returns>Un objeto <see cref="Envelope"/> que representa la respuesta de descarga deserializada.</returns>
-        public static Envelope DeserializarDescarga(XmlDocument xmlContent) => DeserializarEnvelope(xmlContent);
-
-        /// <summary>
-        /// Deserializa un documento XML en un objeto Envelope que representa la respuesta de descarga.
-        /// </summary>
-        /// <param name="xmlContent">El documento XML que contiene la respuesta de descarga.</param>
-        /// <returns>Un objeto <see cref="Envelope"/> que representa la respuesta de descarga deserializada.</returns>
-        public static Envelope DeserializarDescarga(string xmlContent)
-        {
-            if (string.IsNullOrWhiteSpace(xmlContent))
-                return new Envelope();
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(xmlContent);
-            return DeserializarEnvelope(xmlDoc);
-        }
-
-        /// <summary>
         /// Genera la solicitud de descarga en formato XML a partir de un objeto <see cref="SolicitudDescargaEmitidos"/>.
         /// </summary>
         /// <param name="solicitud">Objeto de solicitud con los datos necesarios</param>
@@ -159,6 +138,79 @@ namespace MiSAT
         /// <returns>Un <see cref="string"/> con la solicitud de descarga de folio en formato XML</returns>
         public static string GenerarSolicitudDescarga(SolicitudDescargaFolio solicitud) 
             => SolicitudDescarga(solicitud);
+
+        /// <summary>
+        /// Deserializa un documento XML en un objeto Envelope que representa la respuesta de descarga.
+        /// </summary>
+        /// <param name="xmlContent">El documento XML que contiene la respuesta de descarga.</param>
+        /// <returns>Un objeto <see cref="Envelope"/> que representa la respuesta de descarga deserializada.</returns>
+        public static Envelope DeserializarDescarga(XmlDocument xmlContent) => DeserializarEnvelope(xmlContent);
+
+        /// <summary>
+        /// Deserializa un documento XML en un objeto Envelope que representa la respuesta de descarga.
+        /// </summary>
+        /// <param name="xmlContent">El documento XML que contiene la respuesta de descarga.</param>
+        /// <returns>Un objeto <see cref="Envelope"/> que representa la respuesta de descarga deserializada.</returns>
+        public static Envelope DeserializarDescarga(string xmlContent)
+        {
+            if (string.IsNullOrWhiteSpace(xmlContent))
+                return new Envelope();
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xmlContent);
+            return DeserializarEnvelope(xmlDoc);
+        }
+
+        /// <summary>
+        /// Genera la solicitud de verificación en formato XML a partir de un objeto <see cref="SolicitudVerificacion"/>.
+        /// </summary>
+        /// <param name="solicitud">Objeto de solicitud con los datos necesarios</param>
+        /// <returns>Un <see cref="string"/> con la solicitud de verificación en formato XML</returns>
+        public static string GenerarSolicitudVerificacion(SolicitudVerificacion solicitud)
+        {
+            solicitud sol = new solicitud
+            {
+                IdSolicitud = solicitud.IdSolicitud,
+                RfcSolicitante = solicitud.RfcSolicitante
+            };
+            XmlElement node = sol.GetNodoSolicitud();
+            XmlElement firma = XmlGeneratorUtility.GetNodoFirmado(node, solicitud.Certificado);
+            sol.Signature = firma;
+
+            XmlElement envelope = new Envelope
+            {
+                Header = new Header(),
+                Body = new Body
+                {
+                    VerificaSolicitudDescarga = new VerificaSolicitudDescarga
+                    {
+                        Solicitud = sol
+                    }
+                }
+            }.GetEnvelope();
+            return envelope.OuterXml;
+        }
+
+        /// <summary>
+        /// Deserializa un documento XML en un objeto <see cref="Envelope"/> que representa la respuesta de verificación.
+        /// </summary>
+        /// <param name="xmlContent">El documento XML que contiene la respuesta de verificación.</param>
+        /// <returns>Un objeto <see cref="Envelope"/> que representa la respuesta de verificación deserializada.</returns>
+        public static Envelope DeserializarVerificacion(XmlDocument xmlContent) => DeserializarEnvelope(xmlContent);
+
+        /// <summary>
+        /// Deserializa un documento XML en un objeto <see cref="Envelope"/> que representa la respuesta de verificación.
+        /// </summary>
+        /// <param name="xmlContent">El documento XML que contiene la respuesta de verificación.</param>
+        /// <returns>Un objeto <see cref="Envelope"/> que representa la respuesta de verificación deserializada.</returns>
+        public static Envelope DeserializarVerificacion(string xmlContent)
+        {
+            if (string.IsNullOrWhiteSpace(xmlContent))
+                return new Envelope();
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xmlContent);
+            return DeserializarEnvelope(xmlDoc);
+        }
+
 
         private static string SolicitudDescarga(SolicitudDescarga solicitud)
         {

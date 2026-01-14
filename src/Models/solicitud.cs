@@ -28,6 +28,8 @@ namespace MiSAT.Models
         public string? Complemento { get; set; }
         [XmlAttribute(AttributeName = "Folio")]
         public string Folio { get; set; }
+        [XmlAttribute(AttributeName = "IdSolicitud")]
+        public string IdSolicitud { get; set; }
 
 
         [XmlElement(ElementName = "RfcReceptores", Namespace = WSNamespaces.dmt2)]
