@@ -31,6 +31,11 @@ namespace MiSAT.Service
             return ForzarAtributos(xml);
         }
 
+        public Envelope DeserializarEnvelope(XmlDocument xmlContent)
+        {
+            return XmlGeneratorUtility.DeserializarEnvelope<Envelope>(xmlContent, envelope => envelope);
+        }
+
         private static Timestamp CreateTimestamp(Autenticacion request)
         {
             return new Timestamp

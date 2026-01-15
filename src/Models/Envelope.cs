@@ -67,6 +67,11 @@ namespace MiSAT.Models
     {
     }
 
+    public abstract class SolicitaDescargaResponse
+    {
+        [XmlIgnore]
+        public abstract SolicitaDescargaResult Result { get; set; }
+    }
 
     public class SolicitaDescargaResult
     {
@@ -81,24 +86,24 @@ namespace MiSAT.Models
     }
 
     [XmlRoot(ElementName = "SolicitaDescargaEmitidosResponse", Namespace = WSNamespaces.dmt2)]
-    public class SolicitaDescargaEmitidosResponse
+    public class SolicitaDescargaEmitidosResponse : SolicitaDescargaResponse
     {
         [XmlElement(ElementName = "SolicitaDescargaEmitidosResult")]
-        public SolicitaDescargaResult Result { get; set; }
+        public override SolicitaDescargaResult Result { get; set; }
     }
 
     [XmlRoot(ElementName = "SolicitaDescargaRecibidosResponse", Namespace = WSNamespaces.dmt2)]
-    public class SolicitaDescargaRecibidosResponse
+    public class SolicitaDescargaRecibidosResponse : SolicitaDescargaResponse
     {
         [XmlElement(ElementName = "SolicitaDescargaRecibidosResult")]
-        public SolicitaDescargaResult Result { get; set; }
+        public override SolicitaDescargaResult Result { get; set; }
     }
 
     [XmlRoot(ElementName = "SolicitaDescargaFolioResponse", Namespace = WSNamespaces.dmt2)]
-    public class SolicitaDescargaFolioResponse
+    public class SolicitaDescargaFolioResponse : SolicitaDescargaResponse
     {
         [XmlElement(ElementName = "SolicitaDescargaFolioResult")]
-        public SolicitaDescargaResult Result { get; set; }
+        public override SolicitaDescargaResult Result { get; set; }
     }
 
     public class VerificaSolicitudResult

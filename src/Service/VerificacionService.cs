@@ -17,6 +17,11 @@ namespace MiSAT.Service
             return envelope.OuterXml;
         }
 
+        public VerificaSolicitudDescargaResponse DeserializarEnvelope(XmlDocument xmlContent)
+        {
+            return XmlGeneratorUtility.DeserializarEnvelope(xmlContent, envelope => envelope.Body.VerificaSolicitudDescargaResponse);
+        }
+
         private solicitud CreateSolicitud(SolicitudVerificacion solicitud)
         {
             return new solicitud

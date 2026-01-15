@@ -9,6 +9,8 @@ namespace MiSAT.Utilities
 {
     internal static class XmlGeneratorUtility
     {
+        private readonly static XmlSerializer EnvelopeSerializer = new (typeof(Envelope));
+
         internal static XmlElement GetNodoSolicitud(this solicitud sol)
         {
             var doc = new XmlDocument();
@@ -41,6 +43,27 @@ namespace MiSAT.Utilities
                 serializer.Serialize(writer, envelope, ns);
             }
             return doc.DocumentElement!;
+        }
+
+        internal static T DeserializarEnvelope<T>(XmlDocument xml, Func<Envelope, T> selector)
+        {
+            using var reader = new XmlNodeReader(xml);
+            if (EnvelopeSerializer.Deserialize(reader) is not Envelope envelope)
+                throw new InvalidOperationException("No se pudo deserializar el sobre SOAP.");
+            return selector(envelope);
+        }
+
+        internal static XmlDocument GetXmlElement(this string xmlContent)
+        {
+            if(string.IsNullOrEmpty(xmlContent))
+                throw new ArgumentException("El contenido XML no puede estar vacío.", nameof(xmlContent));
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xmlContent);
+            if (doc.DocumentElement == null)
+                throw new InvalidOperationException("El contenido XML no tiene un elemento raíz");
+            
+            return doc;
         }
 
         internal static XmlElement GetNodoFirmado(XmlElement solicitudNode, X509Certificate2 certificado)
