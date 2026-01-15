@@ -47,84 +47,26 @@ namespace MiSAT.Models
 
     }
 
-    [XmlRoot(ElementName = "SolicitaDescargaEmitidos", Namespace = WSNamespaces.dmt2)]
-    public class SolicitaDescargaEmitidos : SolicitaDescarga
-    {
-    }
-
-    [XmlRoot(ElementName = "SolicitaDescargaRecibidos", Namespace = WSNamespaces.dmt2)]
-    public class SolicitaDescargaRecibidos : SolicitaDescarga
-    {
-    }
-
-    [XmlRoot(ElementName = "SolicitaDescargaFolio", Namespace = WSNamespaces.dmt2)]
-    public class SolicitaDescargaFolio : SolicitaDescarga
-    {
-    }
-
-    [XmlRoot(ElementName = "VerificaSolicitudDescarga", Namespace = WSNamespaces.dmt2)]
-    public class VerificaSolicitudDescarga : SolicitaDescarga
-    {
-    }
-
     public abstract class SolicitaDescargaResponse
     {
         [XmlIgnore]
         public abstract SolicitaDescargaResult Result { get; set; }
     }
 
-    public class SolicitaDescargaResult
+    public abstract class SolicitudResult
     {
         [XmlAttribute(AttributeName = "CodEstatus")]
         public int CodEstatus { get; set; }
         [XmlAttribute(AttributeName = "Mensaje")]
         public string Mensaje { get; set; }
+    }
+
+    public class SolicitaDescargaResult : SolicitudResult
+    {
         [XmlAttribute(AttributeName = "IdSolicitud")]
         public string IdSolicitud { get; set; }
         [XmlAttribute(AttributeName = "RfcSolicitante")]
         public string RfcSolicitante { get; set; }
-    }
-
-    [XmlRoot(ElementName = "SolicitaDescargaEmitidosResponse", Namespace = WSNamespaces.dmt2)]
-    public class SolicitaDescargaEmitidosResponse : SolicitaDescargaResponse
-    {
-        [XmlElement(ElementName = "SolicitaDescargaEmitidosResult")]
-        public override SolicitaDescargaResult Result { get; set; }
-    }
-
-    [XmlRoot(ElementName = "SolicitaDescargaRecibidosResponse", Namespace = WSNamespaces.dmt2)]
-    public class SolicitaDescargaRecibidosResponse : SolicitaDescargaResponse
-    {
-        [XmlElement(ElementName = "SolicitaDescargaRecibidosResult")]
-        public override SolicitaDescargaResult Result { get; set; }
-    }
-
-    [XmlRoot(ElementName = "SolicitaDescargaFolioResponse", Namespace = WSNamespaces.dmt2)]
-    public class SolicitaDescargaFolioResponse : SolicitaDescargaResponse
-    {
-        [XmlElement(ElementName = "SolicitaDescargaFolioResult")]
-        public override SolicitaDescargaResult Result { get; set; }
-    }
-
-    public class VerificaSolicitudResult
-    {
-        [XmlAttribute(AttributeName = "CodEstatus")]
-        public int CodEstatus { get; set; }
-        [XmlAttribute(AttributeName = "EstadoSolicitud")]
-        public int EstadoSolicitud { get; set; }
-        [XmlAttribute(AttributeName = "CodigoEstadoSolicitud")]
-        public int CodigoEstadoSolicitud { get; set; }
-        [XmlAttribute(AttributeName = "NumeroCFDIs")]
-        public int NumeroCFDIs { get; set; }
-        [XmlAttribute(AttributeName = "Mensaje")]
-        public string Mensaje { get; set; }
-    }
-
-    [XmlRoot(ElementName = "VerificaSolicitudDescargaResponse", Namespace = WSNamespaces.dmt2)]
-    public class VerificaSolicitudDescargaResponse
-    {
-        [XmlElement(ElementName = "VerificaSolicitudDescargaResult")]
-        public VerificaSolicitudResult Result { get; set; }
     }
 
     public class Autentica
