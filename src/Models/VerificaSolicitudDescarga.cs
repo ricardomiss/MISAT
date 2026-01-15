@@ -16,6 +16,9 @@ namespace MiSAT.Models
 
     public class VerificaSolicitudResult : SolicitudResult
     {
+        [XmlElement(ElementName = "IdsPaquetes")]
+        public List<string> IdsPaquetes { get; set; }
+
         [XmlAttribute(AttributeName = "EstadoSolicitud")]
         public int EstadoSolicitud { get; set; }
         [XmlAttribute(AttributeName = "CodigoEstadoSolicitud")]
