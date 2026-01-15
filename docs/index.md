@@ -14,14 +14,14 @@ hero:
       link: /api/
 
 features:
-  - title: Deserealización XML
-    details: Deserealiza todas las respuestas de los servicios del SAT a objetos C#
+  - title: Deserialización XML
+    details: Deserializa todas las respuestas de los servicios del SAT a objetos C#
     icon: 📄
   - title: Generar Solicitudes
     details: Genera las solicitudes necesarias para consumir los servicios del SAT
     icon: ✍️
   - title: CFDI
-    details: Maneja la generación y deserealización de CFDIs
+    details: Maneja la generación y deserialización de CFDIs
     icon: 🧾
 ---
 
