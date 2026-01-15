@@ -37,6 +37,8 @@ namespace MiSAT.Models
         public VerificaSolicitudDescarga VerificaSolicitudDescarga { get; set; }
         [XmlElement(ElementName = "VerificaSolicitudDescargaResponse", Namespace = WSNamespaces.dmt2)]
         public VerificaSolicitudDescargaResponse VerificaSolicitudDescargaResponse { get; set; }
+        [XmlElement(ElementName = "PeticionDescargaMasivaTercerosEntrada", Namespace = WSNamespaces.dmt2)]
+        public PeticionDescargaMasivaTercerosEntrada PeticionDescargaMasivaTercerosEntrada { get; set; }
 
     }
 

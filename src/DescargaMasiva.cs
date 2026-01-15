@@ -13,6 +13,7 @@ namespace MiSAT
         private static readonly AutenticacionService _authService = new AutenticacionService();
         private static readonly DescargaService _descargaService = new DescargaService();
         private static readonly VerificacionService _verificacionService = new VerificacionService();
+        private static readonly DescargaPaquetesService _descargaPaqueteService = new DescargaPaquetesService();
 
         #region Autenticación
 
@@ -104,6 +105,18 @@ namespace MiSAT
         /// <param name="xmlContent">El documento XML que contiene la respuesta de verificación.</param>
         /// <returns>Un objeto <see cref="VerificaSolicitudDescargaResponse"/> que representa la respuesta de verificación deserializada.</returns>
         public static VerificaSolicitudDescargaResponse DeserializarVerificacion(string xmlContent) => _verificacionService.DeserializarEnvelope(xmlContent.GetXmlElement());
+
+        #endregion
+
+        #region Solicitud de Descarga Paquetes
+
+        /// <summary>
+        /// Genera la solicitud de descarga de paquetes en formato XML a partir de un objeto <see cref="SolicitudDescargaPaquetes"/>.
+        /// </summary>
+        /// <param name="solicitud">Objeto de solicitud con los datos necesarios</param>
+        /// <returns>Un <see cref="string"/> con la solicitud de descarga de paquetes en formato XML</returns>
+        public static string GenerarSolicitudDescarga(SolicitudDescargaPaquetes solicitud) 
+            => _descargaPaqueteService.GenerarSolicitudDescarga(solicitud);
 
         #endregion
     }

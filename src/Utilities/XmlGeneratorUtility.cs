@@ -140,5 +140,19 @@ namespace MiSAT.Utilities
             }
             return xml.OuterXml;
         }
+
+        internal static XmlElement GetNodo(this peticionDescarga peticion)
+        {
+            var doc = new XmlDocument();
+            XmlSerializer serializer = new XmlSerializer(typeof(peticionDescarga));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("des", WSNamespaces.dmt2);
+            using (XmlWriter writer = doc.CreateNavigator()!.AppendChild())
+            {
+                serializer.Serialize(writer, peticion, ns);
+            }
+            return doc.DocumentElement!;
+        }
+
     }
 }

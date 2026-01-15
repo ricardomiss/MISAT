@@ -232,4 +232,29 @@ namespace MiSAT.Models
             Certificado = certificado;
         }
     }
+    /// <summary>
+    /// Representa una solicitud para la descarga de paquetes de documentos.
+    /// </summary>
+    public class SolicitudDescargaPaquetes
+    {
+        /// <summary>
+        /// Id del paquete a descargar.
+        /// </summary>
+        public string IdPaquete { get; set; }
+        /// <summary>
+        /// RFC del solicitante de la descarga.
+        /// </summary>
+        public string RfcSolicitante { get; set; }
+        /// <summary>
+        /// Certificado X.509 utilizado para autenticar la solicitud.
+        /// </summary>
+        public X509Certificate2 Certificado { get; protected set; }
+
+        public SolicitudDescargaPaquetes(string idPaquete, string rfcSolicitante, X509Certificate2 certificado)
+        {
+            IdPaquete = idPaquete;
+            RfcSolicitante = rfcSolicitante;
+            Certificado = certificado;
+        }
+    }
 }
