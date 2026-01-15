@@ -1,0 +1,2 @@
+# Verificacion
+Conforme a la [documentación oficial del SAT](https://www.sat.gob.mx/portal/public/tramites/factura-electronica), la verificación de solicitudes de descarga masiva permite a los contribuyentes confirmar el estado y los detalles de sus solicitudes previamente enviadas.

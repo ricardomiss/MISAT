@@ -8,7 +8,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Documentacion', link: '/api/' },
-      { text: 'v1.3.0' , link: ''},
+      { text: 'v1.4.6' , link: ''},
     ],
 
     sidebar: [
@@ -32,7 +32,9 @@ export default defineConfig({
               { text: 'Generar Solicitud Autenticacion', link: '/api/generar-solicitud-autenticacion' },
               { text: 'Deserializar Autenticacion', link: '/api/deserializar-autenticacion' },
               { text: 'Generar Solicitud Descarga', link: '/api/generar-solicitud-descarga' },
-              { text: 'Deserializar Descarga', link: '/api/deserializar-descarga' }
+              { text: 'Deserializar Descarga', link: '/api/deserializar-descarga' },
+              { text: 'Generar Solicitud Verificacion', link: '/api/generar-solicitud-verificacion' },
+              { text: 'Deserializar Verificacion', link: '/api/deserializar-verificacion'}
             ]
           }
         ]
@@ -50,6 +52,11 @@ export default defineConfig({
               { text: 'Solicitud Descarga Recibidos', link: '/models/solicitud-descarga-recibidos' },
               { text: 'Solicitud Descarga Folio', link: '/models/solicitud-descarga-folio' },
               { text: 'Solicitud Descarga Result', link: '/models/solicita-descarga-result' }
+          ]},
+          { text: 'Verificacion', link: '/models/verificacion' ,
+            items: [
+              { text: 'Solicitud Verificacion', link: '/models/solicitud-verificacion' },
+              { text: 'Solicitud Verificacion Result', link: '/models/verifica-descarga-result' }
           ]}
         ]
       }
