@@ -11,7 +11,7 @@ NuGet\Install-Package MiSAT
 dotnet add package MiSAT
 ```
 ### Ejemplo Básico 🔧
-En este ejemplo, se creara una solicitud de autenticación proporcionando la fecha inicial y final para la validez del token, así como el certificado X509Certificate2 del contribuyente.
+En este ejemplo, se creara una solicitud de autenticación proporcionando la fecha inicial y final para la validez del token, así como el certificado `X509Certificate2` del contribuyente.
 ```csharp
 using MiSAT;
 using MiSAT.Models;
