@@ -13,6 +13,7 @@ namespace MiSAT
         private static readonly AutenticacionService _authService = new AutenticacionService();
         private static readonly DescargaService _descargaService = new DescargaService();
         private static readonly VerificacionService _verificacionService = new VerificacionService();
+        private static readonly DescargaPaquetesService _descargaPaqueteService = new DescargaPaquetesService();
 
         #region Autenticación
 
@@ -104,6 +105,34 @@ namespace MiSAT
         /// <param name="xmlContent">El documento XML que contiene la respuesta de verificación.</param>
         /// <returns>Un objeto <see cref="VerificaSolicitudDescargaResponse"/> que representa la respuesta de verificación deserializada.</returns>
         public static VerificaSolicitudDescargaResponse DeserializarVerificacion(string xmlContent) => _verificacionService.DeserializarEnvelope(xmlContent.GetXmlElement());
+
+        #endregion
+
+        #region Solicitud de Descarga Paquetes
+
+        /// <summary>
+        /// Genera la solicitud de descarga de paquetes en formato XML a partir de un objeto <see cref="SolicitudDescargaPaquetes"/>.
+        /// </summary>
+        /// <param name="solicitud">Objeto de solicitud con los datos necesarios</param>
+        /// <returns>Un <see cref="string"/> con la solicitud de descarga de paquetes en formato XML</returns>
+        public static string GenerarSolicitudDescarga(SolicitudDescargaPaquetes solicitud) 
+            => _descargaPaqueteService.GenerarSolicitudDescarga(solicitud);
+
+        /// <summary>
+        /// Deserializa un documento XML en un objeto <see cref="PaqueteResponse"/> que representa la respuesta de descarga de paquetes.
+        /// </summary>
+        /// <param name="xmlContent">Objeto XML que contiene la respuesta de descarga de paquetes.</param>
+        /// <returns>Un objeto <see cref="PaqueteResponse"/> que representa la respuesta de descarga de paquetes deserializada.</returns>
+        public static PaqueteResponse ObtenerPaquete(XmlDocument xmlContent) 
+            => _descargaPaqueteService.ObtenerPaquete(xmlContent);
+        
+        /// <summary>
+        /// Deserializa un documento XML en un objeto <see cref="PaqueteResponse"/> que representa la respuesta de descarga de paquetes.
+        /// </summary>
+        /// <param name="xmlContent">Un <see cref="string"/> que contiene la respuesta de descarga de paquetes en formato XML.</param>
+        /// <returns>Un objeto <see cref="PaqueteResponse"/> que representa la respuesta de descarga de paquetes deserializada.</returns>
+        public static PaqueteResponse ObtenerPaquete(string xmlContent) 
+            => _descargaPaqueteService.ObtenerPaquete(xmlContent.GetXmlElement());
 
         #endregion
     }
