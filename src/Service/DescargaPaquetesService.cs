@@ -14,6 +14,24 @@ namespace MiSAT.Service
             peticion.Signature = firma;
             return GenerarSolicitudXML(peticion).OuterXml;
         }
+
+        internal PaqueteResponse ObtenerPaquete(XmlDocument xmlContent)
+        {
+            PaqueteResponse response = XmlGeneratorUtility.DeserializarEnvelope(xmlContent, envelope => 
+            {
+                PaqueteResponse model = new PaqueteResponse();
+                model.CodEstatus = envelope.Header.Respuesta.CodEstatus;
+                model.Mensaje = envelope.Header.Respuesta.Mensaje;
+                
+                if(!string.IsNullOrEmpty(envelope.Body.RespuestaDescargaMasivaTercerosSalida.Paquete))
+                    model.Paquete = Convert.FromBase64String(envelope.Body.RespuestaDescargaMasivaTercerosSalida.Paquete);
+
+                return model;
+            });
+
+            return response;
+        }
+
         private peticionDescarga GenerarPeticionDescarga(SolicitudDescargaPaquetes solicitud)
         {
             return new peticionDescarga

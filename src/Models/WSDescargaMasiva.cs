@@ -257,4 +257,15 @@ namespace MiSAT.Models
             Certificado = certificado;
         }
     }
+
+    /// <summary>
+    /// Representa la respuesta de una solicitud de descarga de paquetes.
+    /// </summary>
+    public class PaqueteResponse : SolicitudResult
+    {
+        /// <summary>
+        /// Paquete de datos descargado en formato de arreglo de bytes. (Puede ser un archivo compreso ZIP)
+        /// </summary>
+        public byte[] Paquete { get; internal set; }
+    }
 }

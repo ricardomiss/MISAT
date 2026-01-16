@@ -118,6 +118,22 @@ namespace MiSAT
         public static string GenerarSolicitudDescarga(SolicitudDescargaPaquetes solicitud) 
             => _descargaPaqueteService.GenerarSolicitudDescarga(solicitud);
 
+        /// <summary>
+        /// Deserializa un documento XML en un objeto <see cref="PaqueteResponse"/> que representa la respuesta de descarga de paquetes.
+        /// </summary>
+        /// <param name="xmlContent">Objeto XML que contiene la respuesta de descarga de paquetes.</param>
+        /// <returns>Un objeto <see cref="PaqueteResponse"/> que representa la respuesta de descarga de paquetes deserializada.</returns>
+        public static PaqueteResponse ObtenerPaquete(XmlDocument xmlContent) 
+            => _descargaPaqueteService.ObtenerPaquete(xmlContent);
+        
+        /// <summary>
+        /// Deserializa un documento XML en un objeto <see cref="PaqueteResponse"/> que representa la respuesta de descarga de paquetes.
+        /// </summary>
+        /// <param name="xmlContent">Un <see cref="string"/> que contiene la respuesta de descarga de paquetes en formato XML.</param>
+        /// <returns>Un objeto <see cref="PaqueteResponse"/> que representa la respuesta de descarga de paquetes deserializada.</returns>
+        public static PaqueteResponse ObtenerPaquete(string xmlContent) 
+            => _descargaPaqueteService.ObtenerPaquete(xmlContent.GetXmlElement());
+
         #endregion
     }
 }
