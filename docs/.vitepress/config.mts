@@ -8,7 +8,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Documentacion', link: '/api/' },
-      { text: 'v1.4.6' , link: ''},
+      { text: 'v1.5.0' , link: ''},
     ],
 
     sidebar: [
@@ -34,7 +34,9 @@ export default defineConfig({
               { text: 'Generar Solicitud Descarga', link: '/api/generar-solicitud-descarga' },
               { text: 'Deserializar Descarga', link: '/api/deserializar-descarga' },
               { text: 'Generar Solicitud Verificacion', link: '/api/generar-solicitud-verificacion' },
-              { text: 'Deserializar Verificacion', link: '/api/deserializar-verificacion'}
+              { text: 'Deserializar Verificacion', link: '/api/deserializar-verificacion'},
+              { text: 'Generar Solicitud Descarga Paquete', link: '/api/generar-solicitud-descarga-paquete' },
+              { text: 'Obtener Paquete', link: '/api/obtener-paquete' }
             ]
           }
         ]
@@ -57,7 +59,13 @@ export default defineConfig({
             items: [
               { text: 'Solicitud Verificacion', link: '/models/solicitud-verificacion' },
               { text: 'Solicitud Verificacion Result', link: '/models/verifica-descarga-result' }
-          ]}
+          ]},
+          { text: 'Descarga Paquete', link: '/models/descarga-paquete',
+            items: [
+              { text: 'Solicitud Descarga Paquetes', link: '/models/solicitud-descarga-paquetes' },
+              { text: 'Paquete Response', link: '/models/paquete-response' }
+            ]
+          }
         ]
       }
     ],

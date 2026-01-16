@@ -19,7 +19,7 @@ class Program
         SolicitudVerificacion solicitud = new SolicitudVerificacion
         (
             "d40d966e-40f7-48e0-a7f3-8075049c6011", 
-            "GOHB910807H37", 
+            "AAA010101AAA", 
             new X509Certificate2("C:\\ruta\\del\\certificado.pfx", "C0ntr4s3ñ4")
         );
         string xml = DescargaMasiva.GenerarSolicitudVerificacion(solicitud);
