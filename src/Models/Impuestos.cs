@@ -11,9 +11,9 @@ namespace MiSAT.Models
         public Retenciones Retenciones { get; set; }
 
         [XmlAttribute(AttributeName = "TotalImpuestosRetenidos")]
-        public string TotalImpuestosRetenidos { get; set; }
+        public decimal TotalImpuestosRetenidos { get; set; }
 
         [XmlAttribute(AttributeName = "TotalImpuestosTrasladados")]
-        public string TotalImpuestosTrasladados { get; set; }
+        public decimal TotalImpuestosTrasladados { get; set; }
     }
 }
