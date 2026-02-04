@@ -12,6 +12,8 @@ namespace MiSAT.Models
         internal const string o = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
         internal const string dmt = "http://DescargaMasivaTerceros.gob.mx";
         internal const string dmt2 = "http://DescargaMasivaTerceros.sat.gob.mx";
+        internal const string tem = "http://tempuri.org/";
+        internal const string a = "http://schemas.datacontract.org/2004/07/Sat.Cfdi.Negocio.ConsultaCfdi.Servicio";
     }
 
     /// <summary>

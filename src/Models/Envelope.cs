@@ -41,7 +41,10 @@ namespace MiSAT.Models
         public PeticionDescargaMasivaTercerosEntrada PeticionDescargaMasivaTercerosEntrada { get; set; }
         [XmlElement(ElementName = "RespuestaDescargaMasivaTercerosSalida", Namespace = WSNamespaces.dmt2)]
         public RespuestaDescargaMasivaTercerosSalida RespuestaDescargaMasivaTercerosSalida { get; set; }
-
+        [XmlElement(ElementName = "Consulta", Namespace = WSNamespaces.tem)]
+        public Consulta Consulta { get; set; }
+        [XmlElement(ElementName = "ConsultaResponse", Namespace = WSNamespaces.tem)]
+        public ConsultaResponse ConsultaResponse { get; set; }
     }
 
     public abstract class SolicitaDescarga
