@@ -8,7 +8,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Documentacion', link: '/api/' },
-      { text: 'v1.5.0' , link: ''},
+      { text: 'v1.6.2' , link: ''},
     ],
 
     sidebar: [
@@ -23,7 +23,9 @@ export default defineConfig({
           { 
             text: 'CFDI', 
             items: [
-              { text: 'Obtener', link: '/api/obtener' }
+              { text: 'Obtener', link: '/api/obtener' },
+              { text: 'Generar Solicitud Consulta', link: '/api/generar-solicitud-consulta' },
+              { text: 'Deserializar Consulta', link: '/api/deserializar-consulta' }
             ]
           },
           { 
@@ -48,6 +50,12 @@ export default defineConfig({
           { text: 'Comprobante', link: '/models/comprobante' },
           { text: 'Envelope', link: '/models/envelope' },
           { text: 'Autenticacion', link: '/models/autenticacion' },
+          { text: 'Consulta CFDI', link: '/models/consulta-cfdi',
+            items: [
+              { text: 'Solicitud Consulta CFDI', link: '/models/solicitud-consulta-cfdi' },
+              { text: 'Consulta Result', link: '/models/consulta-result' }
+            ]
+          },
           { text: 'Solicitud Descarga', link: '/models/solicitud-descarga', 
             items: [
               { text: 'Solicitud Descarga Emitidos', link: '/models/solicitud-descarga-emitidos' },

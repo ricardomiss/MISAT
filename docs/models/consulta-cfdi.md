@@ -1,0 +1,2 @@
+# Consulta CFDI
+Conforme a la [documentación oficial del SAT](https://www.sat.gob.mx/portal/public/tramites/factura-electronica), la validacion CFDI permite a los contribuyentes confirmar la autenticidad y validez de los Comprobantes Fiscales Digitales por Internet (CFDI) en las Bases de Datos del SAT.
