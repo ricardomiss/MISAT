@@ -35,9 +35,9 @@ namespace MiSAT.Service
             return xml.OuterXml;
         }
 
-        public ConsultaResponse DeserializarConsultaCFDI(XmlDocument xmlContent)
+        public ConsultaResult DeserializarConsultaCFDI(XmlDocument xmlContent)
         {
-            return XmlGeneratorUtility.DeserializarEnvelope<ConsultaResponse>(xmlContent, envelope => envelope.Body.ConsultaResponse);
+            return XmlGeneratorUtility.DeserializarEnvelope<ConsultaResult>(xmlContent, envelope => envelope.Body.ConsultaResponse.ConsultaResult);
         }
 
         private XmlNode GenerarCData(SolicitudConsultaCFDI solicitud)

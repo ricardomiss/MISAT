@@ -74,19 +74,19 @@ namespace MiSAT
         }
 
         /// <summary>
-        /// Deserializa el contenido XML de una respuesta de consulta CFDI en un objeto <see cref="ConsultaResponse"/>.
+        /// Deserializa el contenido XML de una respuesta de consulta CFDI en un objeto <see cref="ConsultaResult"/>.
         /// </summary>
         /// <param name="xmlContent">Objeto XmlDocument que contiene la respuesta de consulta CFDI en formato XML.</param>
-        /// <returns>Un objeto <see cref="ConsultaResponse"/> deserializado desde el contenido XML proporcionado.</returns>
-        public static ConsultaResponse DeserializarConsulta(XmlDocument xmlContent) 
+        /// <returns>Un objeto <see cref="ConsultaResult"/> deserializado desde el contenido XML proporcionado.</returns>
+        public static ConsultaResult DeserializarConsulta(XmlDocument xmlContent) 
             => _consultaCFDIService.DeserializarConsultaCFDI(xmlContent);
 
         /// <summary>
-        /// Deserializa el contenido XML de una respuesta de consulta CFDI en un objeto <see cref="ConsultaResponse"/>.
+        /// Deserializa el contenido XML de una respuesta de consulta CFDI en un objeto <see cref="ConsultaResult"/>.
         /// </summary>
         /// <param name="xmlContent">Un string que contiene la respuesta de consulta CFDI en formato XML.</param>
-        /// <returns>Un objeto <see cref="ConsultaResponse"/> deserializado desde el contenido XML proporcionado.</returns>
-        public static ConsultaResponse DeserializarConsulta(string xmlContent) 
+        /// <returns>Un objeto <see cref="ConsultaResult"/> deserializado desde el contenido XML proporcionado.</returns>
+        public static ConsultaResult DeserializarConsulta(string xmlContent) 
             => _consultaCFDIService.DeserializarConsultaCFDI(xmlContent.GetXmlElement());
     }
 }
