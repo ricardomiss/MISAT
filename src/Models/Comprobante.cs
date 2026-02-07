@@ -27,7 +27,7 @@ namespace MiSAT.Models
         [XmlAttribute(AttributeName = "Folio")]
         public string Folio { get; set; }
         [XmlAttribute(AttributeName = "Fecha")]
-        public string Fecha { get; set; }
+        public DateTime Fecha { get; set; }
         [XmlAttribute(AttributeName = "Sello")]
         public string Sello { get; set; }
         [XmlAttribute(AttributeName = "FormaPago")]
